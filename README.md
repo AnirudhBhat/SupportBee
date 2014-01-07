@@ -9,7 +9,7 @@ QuickStart
 
 SupportBee sb = new SupportBee("Enter your user name", "Enter your API token");
 
-<code>
+
 sb.show_tickets("Enter ticket number");   // To show tickets.
 
 
