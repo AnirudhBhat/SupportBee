@@ -5,7 +5,7 @@ Java wrapper for SupportBee API.
 
 QuickStart
 ==========
-
+<code>
 SupportBee sb = new SupportBee("Enter your user name", "Enter your API token");
 
 
@@ -55,7 +55,7 @@ sb.fetch_agents(true);    // To fetch agents.
 sb.fetch_labels();    // To fetch labels.
 
 
-
+</code>
 
 
 
