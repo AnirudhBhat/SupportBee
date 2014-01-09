@@ -13,13 +13,19 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class SupportBee {
-	private String Base_Url = "https://%s.supportbee.com";
-	private String account_name, auth_token, url;
+	public String Base_Url = "https://%s.supportbee.com";
+	public String account_name, auth_token, url;
+	String name = "abhat";
+	String token = "1Ma2adYzfMyg9tLX5nzn";
 
 	public SupportBee(String account_name, String auth_token) {
 		this.account_name = account_name;
 		this.auth_token = auth_token;
 		this.url = String.format(this.Base_Url, this.account_name);
+	}
+	
+	public SupportBee(){
+		
 	}
 
 	private String create_json(String subject, String requester_name,
@@ -86,8 +92,8 @@ public class SupportBee {
 	}
 
 	private String request_create_ticket(String url, String subject,
-			String requester_name, String requester_email,
-			String copied_emails, String notify_requester, String content) {
+            String requester_name, String requester_email,
+            String copied_emails, String notify_requester, String content) {
 		// String url_params = "subject=" + subject + "&requester_name=" +
 		// requester_name + "&requester_email=" + requester_email +
 		// "&copied_emails=" + copied_emails + "&notify_requester=" +
@@ -358,20 +364,23 @@ public class SupportBee {
 		return data;
 	}
 
-	public String create_ticket(String subject, String requester_name,
-			String requester_email, String copied_emails,
-			String notify_requester, String content) {
-		String data = request_create_ticket(this.url, subject, requester_name,
-				requester_email, copied_emails, notify_requester, content);
-		return data;
+
+	public Ticket create_ticket(CreateTicket ct) {
+		String data = request_create_ticket(this.url, ct.subject, ct.requester_name,
+				ct.requester_email, ct.copied_emails, ct.notify_requester, ct.content);
+		JSONObject jsonobj = new JSONObject();
+		jsonobj.put("data", data);
+		Ticket ticket = new Ticket(jsonobj);
+		return ticket;
+		//return data;
 	}
 
-	public String create_ticket(String subject, String requester_email,
+	/*public String create_ticket(String subject, String requester_email,
 			String content) {
 		String data = request_create_ticket(this.url, subject, "none",
 				requester_email, "none", "false", content);
 		return data;
-	}
+	}*/
 
 	public String show_tickets(String id) {
 		String data = request_show_tickets(id);

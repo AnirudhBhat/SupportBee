@@ -1,7 +1,12 @@
 public class supportbeedemo {
 	public static void main(String[] args){
-		SupportBee sb = new SupportBee("ENTER YOU USER NAME", "ENTER YOUR API TOKEN");
-		System.out.println(sb.create_ticket("This is a Test subject", "test@gmail.com", "Yet another Demo Content"));
+		SupportBee sb = new SupportBee("abhat", "1Ma2adYzfMyg9tLX5nzn");
+		CreateTicket ct = new CreateTicket();
+		ct.subject = "Demo subject";
+		ct.content = "simple Demo content";
+		ct.requester_email = "abhat@gmail.com"; 
+		Ticket ticket = sb.create_ticket(ct);
+		ticket.star();
 		//System.out.println(sb.show_tickets("1882744"));
 		//System.out.println(sb.archive_ticket("1882744"));
 		//System.out.println(sb.unarchive_ticket("1882744"));
